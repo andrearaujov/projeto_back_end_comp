@@ -1,0 +1,12 @@
+@"
+# Docker
+.docker/
+pgdata/
+
+# Node.js (Exemplo, caso use)
+node_modules/
+.env
+dist/
+build/
+*.log
+"@ | Out-File -FilePath ".gitignore" -Encoding utf8
