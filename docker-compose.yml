@@ -1,0 +1,23 @@
+﻿services:
+  # Serviço do Banco de Dados (PostgreSQL)
+  db:
+    image: postgres:latest  # Usamos a imagem oficial do Postgres
+    container_name: biblioteca-db
+    restart: unless-stopped
+    environment:
+      # Define as credenciais do banco de dados
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: biblioteca_db
+    ports:
+    # Mapeia a porta 5432 do contêiner para a 5433 da sua máquina
+      - "5433:5432"
+    volumes:
+      # Volume para persistência dos dados
+      - pgdata:/var/lib/postgresql/data
+      # Monta o script de inicialização do SQL
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  # Define o volume nomeado para persistência
+  pgdata:
