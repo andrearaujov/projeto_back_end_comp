@@ -14,10 +14,10 @@
       - "5433:5432"
     volumes:
       # Volume para persistência dos dados
-      - pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql # <-- MUDANÇA AQUI
       # Monta o script de inicialização do SQL
       - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
-
+      
 volumes:
   # Define o volume nomeado para persistência
   pgdata:
