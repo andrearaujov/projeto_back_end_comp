@@ -19,9 +19,5 @@ app.use('/', authRoutes); // Rotas de /login e /membros
 app.use('/livros', livrosRoutes); // Rotas de /livros
 app.use('/emprestimos', emprestimosRoutes); // Rotas de /emprestimos
 
-// const PORT = process.env.PORT || 3000;
-// app.listen(PORT, () => {
-//   console.log(`🚀 Servidor rodando na porta ${PORT}`);
-// });
 
 export default app;
