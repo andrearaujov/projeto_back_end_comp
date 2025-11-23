@@ -1,0 +1,321 @@
+{
+	"info": {
+		"_postman_id": "e185e792-7340-480b-b948-a908428598bb",
+		"name": "Biblioteca",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44578411"
+	},
+	"item": [
+		{
+			"name": "Criar um adm",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Admin Apresentacao\",\r\n  \"email\": \"admin@demo.com\",\r\n  \"senha\": \"123\",\r\n  \"tipo\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/membros",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"membros"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cria um leitor",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Leitor Demo\",\r\n  \"email\": \"leitor@demo.com\",\r\n  \"senha\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/membros",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"membros"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login como adm",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"admin@demo.com\",\r\n  \"senha\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login como leitor",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"leitor@demo.com\",\r\n  \"senha\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cria um livro",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbkBkZW1vLmNvbSIsInRpcG8iOiJhZG1pbiIsImlhdCI6MTc2MzkxODIzMiwiZXhwIjoxNzYzOTIxODMyfQ.Vg3DqXNjkGis8jIqLt8IQzQsjh14LOtxl0FlJPZEkLo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"titulo\": \"O Guia do Mochileiro das Galáxias\",\r\n  \"autor\": \"Douglas Adams\",\r\n  \"isbn\": \"42424242\",\r\n  \"copias_disponiveis\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/livros",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"livros"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lista os livros",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbkBkZW1vLmNvbSIsInRpcG8iOiJhZG1pbiIsImlhdCI6MTc2MzkxODIzMiwiZXhwIjoxNzYzOTIxODMyfQ.Vg3DqXNjkGis8jIqLt8IQzQsjh14LOtxl0FlJPZEkLo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/livros",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"livros"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "emprestimo para o leitor",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"livro_id\": 1,\r\n  \"data_devolucao_prevista\": \"2025-12-30\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/emprestimos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"emprestimos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "realizar devolução do livro",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJsZWl0b3JAZGVtby5jb20iLCJ0aXBvIjoibGVpdG9yIiwiaWF0IjoxNzYzOTE4NDI5LCJleHAiOjE3NjM5MjIwMjl9.mQRRWOkCwNpl9j_sTKytXcHDWAX4sAJ0PGdBVAvCplY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/emprestimos/1/devolver",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"emprestimos",
+						"1",
+						"devolver"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar emprestimos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJsZWl0b3JAZGVtby5jb20iLCJ0aXBvIjoibGVpdG9yIiwiaWF0IjoxNzYzOTE4NDI5LCJleHAiOjE3NjM5MjIwMjl9.mQRRWOkCwNpl9j_sTKytXcHDWAX4sAJ0PGdBVAvCplY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/emprestimos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"emprestimos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbkBkZW1vLmNvbSIsInRpcG8iOiJhZG1pbiIsImlhdCI6MTc2MzkxOTA3OSwiZXhwIjoxNzYzOTIyNjc5fQ.w-mY-T75SusD1AWQR_5wpnxlNsmy7oMmSC1qGMZ5Vgg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"livro_id\": 1,\r\n  \"data_devolucao_prevista\": \"2025-12-30\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/emprestimos/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"emprestimos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

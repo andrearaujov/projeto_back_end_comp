@@ -19,5 +19,4 @@ app.use('/', authRoutes); // Rotas de /login e /membros
 app.use('/livros', livrosRoutes); // Rotas de /livros
 app.use('/emprestimos', emprestimosRoutes); // Rotas de /emprestimos
 
-
 export default app;

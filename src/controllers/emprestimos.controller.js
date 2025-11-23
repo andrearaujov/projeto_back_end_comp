@@ -119,3 +119,40 @@ export const listarEmprestimos = async (req, res) => {
     res.status(500).json({ error: 'Erro ao listar empréstimos.' });
   }
 };
+
+export const deletarEmprestimo = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    // 1. Busca o empréstimo para saber se o livro foi devolvido ou não
+    const emprestimo = await prisma.emprestimos.findUnique({
+      where: { id: parseInt(id) },
+    });
+
+    if (!emprestimo) {
+      return res.status(404).json({ error: 'Empréstimo não encontrado.' });
+    }
+
+    // 2. Transação para deletar e corrigir estoque se necessário
+    await prisma.$transaction(async (tx) => {
+      // Se o livro NÃO foi devolvido ainda, precisamos repor o estoque ao deletar o registro
+      if (!emprestimo.data_devolucao_real) {
+        await tx.livros.update({
+          where: { id: emprestimo.livro_id },
+          data: { copias_disponiveis: { increment: 1 } },
+        });
+      }
+
+      // Deleta o registro de fato
+      await tx.emprestimos.delete({
+        where: { id: parseInt(id) },
+      });
+    });
+
+    res.status(204).send(); // Sucesso sem conteúdo
+
+  } catch (error) {
+    console.error('Erro ao deletar empréstimo:', error);
+    res.status(500).json({ error: 'Erro ao deletar empréstimo.' });
+  }
+};
